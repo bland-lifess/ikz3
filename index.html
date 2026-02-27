@@ -5,22 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>My Digital Abode</title>
-    <meta name="title" content="My Digital Abode">
-    <meta name="description" content="A cozy corner of the internet inspired by Bread's Abode.">
-
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://bland-lifess.github.io/ikz3/">
-    <meta property="og:title" content="My Digital Abode">
-    <meta property="og:description" content="Welcome to my little slice of the web. Come on in!">
-    <meta property="og:image" content="https://googleusercontent.com/profile/picture/0">
-
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="My Digital Abode">
-    <meta property="twitter:description" content="A cozy corner of the internet.">
+    <meta name="description" content="A cozy, JavaScript-enhanced personal space.">
 
     <style>
+        /* The "Digital Cozy" Aesthetic */
         body {
-            background-color: #fcfaf2;
+            background-color: #fcfaf2; /* Paper/Cream color */
             font-family: 'Courier New', Courier, monospace;
             display: flex;
             justify-content: center;
@@ -28,6 +18,8 @@
             height: 100vh;
             margin: 0;
             overflow: hidden;
+            /* Custom Sparkle Cursor */
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' style='font-size:24px'><text y='50%'>✨</text></svg>"), auto;
         }
 
         .card {
@@ -36,43 +28,69 @@
             border: 2px solid #333;
             box-shadow: 8px 8px 0px #d6d1b1;
             transform: rotate(-1deg);
+            /* Hand-drawn organic border shape */
             border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
             text-align: center;
-            max-width: 300px;
+            max-width: 320px;
             position: relative;
             z-index: 10;
+            transition: transform 0.3s ease;
         }
 
-        h1 { color: #555; font-size: 1.5rem; margin-bottom: 10px; }
-        p { color: #777; line-height: 1.5; margin: 5px 0; }
+        .card:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
 
+        h1 { color: #555; font-size: 1.4rem; margin-bottom: 15px; }
+        p { color: #777; line-height: 1.6; }
+
+        /* Floating Parallax Elements */
         .floaty {
             position: absolute;
             font-size: 2.5rem;
-            opacity: 0.5;
+            opacity: 0.4;
             user-select: none;
-            animation: drift 6s infinite ease-in-out;
+            animation: drift 7s infinite ease-in-out;
         }
 
         @keyframes drift {
-            0%, 100% { transform: translateY(0) translateX(0) rotate(0); }
-            50% { transform: translateY(-30px) translateX(10px) rotate(15deg); }
+            0%, 100% { transform: translateY(0) rotate(0); }
+            50% { transform: translateY(-35px) rotate(20deg); }
         }
     </style>
 </head>
 <body>
 
-    <div class="floaty" style="top: 15%; left: 10%;">☁️</div>
-    <div class="floaty" style="top: 20%; right: 15%; animation-delay: 1s;">✨</div>
-    <div class="floaty" style="bottom: 15%; left: 20%; animation-delay: 3s;">🌱</div>
-    <div class="floaty" style="bottom: 10%; right: 12%; animation-delay: 2s;">🍞</div>
+    <div class="floaty" style="top: 10%; left: 10%;">☁️</div>
+    <div class="floaty" style="top: 20%; right: 15%; animation-delay: 1.5s;">✨</div>
+    <div class="floaty" style="bottom: 15%; left: 15%; animation-delay: 3s;">🌱</div>
+    <div class="floaty" style="bottom: 10%; right: 10%; animation-delay: 0.5s;">🍞</div>
 
     <div class="card">
-        <h1>Welcome home.</h1>
-        <p>This is my digital abode.</p>
-        <p>It's still growing, but thank you for stopping by.</p>
-        <p style="font-size: 0.8rem; margin-top: 20px;">~ <i>Sent from my iPad</i> ~</p>
+        <h1 id="dynamic-greeting">Welcome home.</h1>
+        <p>This is my little slice of the web.</p>
+        <p>It's cozy, it's mine, and it's powered by a tiny bit of magic.</p>
+        <hr style="border: 0; border-top: 1px dashed #ccc; margin: 20px 0;">
+        <p style="font-size: 0.75rem;">Status: 🌱 Growing</p>
     </div>
 
+    <script>
+        (function() {
+            const greeting = document.getElementById('dynamic-greeting');
+            const hour = new Date().getHours();
+            
+            // Logic to change content dynamically
+            let msg = "Welcome to my abode.";
+            if (hour < 12) msg = "Good morning! Welcome home.";
+            else if (hour < 18) msg = "Good afternoon! Welcome home.";
+            else msg = "Good evening! Welcome home.";
+            
+            // Apply the message
+            if (greeting) {
+                greeting.textContent = msg;
+                console.log("JS.org check: Script successfully updated the greeting.");
+            }
+        })();
+    </script>
 </body>
 </html>
